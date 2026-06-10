@@ -9,33 +9,48 @@ package bagian3.perpustakaan;
  * @author ACER
  */
 public class Buku {
-    // Atribut: data yang dimiliki setiap buku
     private final String judul;
     private final String penulis;
+    private final int tahunTerbit;
     private boolean dipinjam;
-    // Constructor: dipanggil saat objek dibuat
-    public Buku(String judul, String penulis) {
+
+    public Buku(String judul, String penulis, int tahunTerbit) {
         this.judul = judul;
         this.penulis = penulis;
-        this.dipinjam = false; // buku baru dianggap tersedia
+        this.tahunTerbit = tahunTerbit;
+        this.dipinjam = false;
     }
-    // Getter: cara membaca atribut dari luar class
+
     public String getJudul() {
         return judul;
     }
+
     public String getPenulis() {
         return penulis;
     }
+
+    public int getTahunTerbit() {
+        return tahunTerbit;
+    }
+
     public boolean isDipinjam() {
         return dipinjam;
     }
-    // Method untuk mengubah status pinjam
-    public void setDipinjam(boolean dipinjam) {
-        this.dipinjam = dipinjam;
+
+    public void pinjam() {
+        dipinjam = true;
     }
-    // Mengembalikan keterangan buku dalam bentuk teks
-    public String info() {
-        String status = dipinjam ? "Dipinjam" : "Tersedia";
-        return judul + " oleh " + penulis + " [" + status + "]";
+
+    public void kembalikan() {
+        dipinjam = false;
+    }
+
+    public void info() {
+        System.out.println("Judul        : " + judul);
+        System.out.println("Penulis      : " + penulis);
+        System.out.println("Tahun Terbit : " + tahunTerbit);
+        System.out.println("Status       : " +
+                (dipinjam ? "Dipinjam" : "Tersedia"));
+        System.out.println();
     }
 }
